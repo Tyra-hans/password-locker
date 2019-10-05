@@ -9,3 +9,9 @@ class TestUser(unittest.TestCase):
     unittest.TestCase: TestCase class that helps in creating test cases
         
     '''
+
+    def setUp(self):
+        '''
+        set up method to run before eavh test cases.
+        '''
+        self.new_user = User('Tyra','12344')
