@@ -15,3 +15,6 @@ class TestUser(unittest.TestCase):
         set up method to run before eavh test cases.
         '''
         self.new_user = User('Tyra','12344')
+
+if __name__ == '__main__':
+    unittest.main()
