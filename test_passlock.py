@@ -1,4 +1,5 @@
 import unittest
+import pyperclip
 from passlock import Credential
 
 class TestCredential(unittest.TestCase):
@@ -92,6 +93,18 @@ class TestCredential(unittest.TestCase):
             '''
 
             self.assertEqual(Credential.display_credentials(),Credential.credential_list)
+
+    def test_copy_username(self):
+        '''
+        Test to confirm that we are copying the credential
+        '''
+
+        self.new_credential.save_credential()
+        Credential.copy_username('title')
+        
+        self.assertEqual(self.new_credential.username,pyperclip.paste())
+
+
 
 if __name__ == '__main__':
     unittest.main()
