@@ -61,5 +61,17 @@ class TestCredential(unittest.TestCase):
         self.new_credential.delete_credential()
         self.assertEqual(len(Credential.credential_list),1)
 
+    def test_find_credential_by_title(self):
+        '''
+        test to check if we can find credential by it's titleand display
+        '''
+
+        self.new_credential.save_credential()
+        test_credential = Credential('twitter','tyrahans','0987')
+        test_credential.save_credential()
+
+        found_credential = Credential.find_by_title('twitter')
+        self.assertEqual(found_credential.username,test_credential.username)
+
 if __name__ == '__main__':
     unittest.main()

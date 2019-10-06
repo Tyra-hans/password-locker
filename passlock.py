@@ -23,10 +23,24 @@ class Credential :
 
         Credential.credential_list.append(self)
 
-    def delete_contact(self):
+    def delete_credential(self):
 
         '''
-        delete_contact method deletes a saved contact from the contact_list
+        delete_credential method deletes a saved contact from the contact_list
         '''
 
         Credential.credential_list.remove(self)
+
+    @classmethod
+    def find_by_title(cls,title):
+        '''
+        Method that takes in the title and returns a credential that matches that title.
+
+        Args:
+            title: title to search for
+        Returns :
+            Credential hat matches that title
+        '''
+        for credential in cls.credential_list:
+            if credential.title == title:
+                return credential
