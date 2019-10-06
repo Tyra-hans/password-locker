@@ -1,10 +1,13 @@
-class User:
+class Credential :
     '''
-    Class that allows users to sign up and create a 
-    password and username for themselves
+    class that generates new instances of credentials
     '''
-    sign_up_info = []
-    def __init__(self,username,password):
+    def __init__(self,title,username, password):
+        '''
+        __init__ method that allows us to define properties for our objects.
 
-        self.username = username
-        self.password = password
+        Args:
+            title: New credential title
+            username: New credential username
+            password: New credential password
+        '''
