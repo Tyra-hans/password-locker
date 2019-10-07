@@ -13,7 +13,7 @@ def save_users(user):
     '''
     Function to save Users
     '''
-    user.save_users()
+    user.save_users(user)
 def create_credentials(title,username,password):
     '''
     Function to create new Credentials
@@ -58,12 +58,12 @@ def main():
    
     status = input("Hello Welcome to Password locker. Already have an account? (y/n) q:exit")
     if status == 'y': 
-        login = input('Enter login name: ')
+        name = input('Enter login name: ')
         password = input ('Enter password: ')
 
-        if login in User.users and User.users == password:
+        if name in User.users and User.users == password:
             print('Login successful!')
-            print(f"Hello {login}. what would you like to do?")
+            print(f"Hello {name}. what would you like to do?")
             print('\n')
         else:
             print('\n This user doesnt exist or incorrect password \n')
@@ -71,20 +71,22 @@ def main():
             
 
     elif status == 'n': 
-        create_Login = input('Create username: ')
+        create_name = input('Create username: ')
 
-        if create_Login in User.users:
+        if create_name in User.users:
             print('Name already exists!')
-            login = input('Enter login name: ')
+            name = input('Enter login name: ')
             password = input ('Enter password: ')
-            if login in User.users and User.users == password:
+            
+            if name in User.users and User.users == password:
                 print('Login successful!')
-                print(f"Hello {login}. what would you like to do?")
+                print(f"Hello {name}. what would you like to do?")
                 print('\n')
 
         else :
-            create_password = input('Create password: ')
-            User.users[create_Login] = create_password
+            password = input('Create password: ')
+            # User.users = create_password
+            save_users(create_users(name,password))
 
             print('\n account created !\n')
             login = input('Enter login name: ')

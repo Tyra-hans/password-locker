@@ -22,11 +22,18 @@ class User:
         '''
 
         User.users.append(self)
+    @classmethod
+    def existing_user(cls,name):
+        '''
+        Existing user method checks if the user exists in the user list
+        Args: name - to search whether the name exists in the user list
+        Returns:
+        Boolean: true or false depending on whether or not a user account exists.
+        '''
+        for user in cls.users:
+            if user.name == name:
+                return True
+        return False
+    
 
-    def login(self):
-        '''
-        login method allows users to login
-        '''
         
-
-
