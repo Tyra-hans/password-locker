@@ -1,4 +1,6 @@
 import pyperclip
+import random
+import string
 
 class Credential :
     '''
@@ -24,7 +26,15 @@ class Credential :
         '''
 
         Credential.credential_list.append(self)
-
+        
+    def generate_password(self,size =9, character = string.ascii_lowercase+ string.digits+ string.punctuation ):
+        '''
+        method that allows the user to generate a password with 9 characters
+        '''
+        generate_password = ''.join(random.choice(chararcter)
+        for _ in range(size))
+        return generate_password
+        
     def delete_credential(self):
 
         '''

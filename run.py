@@ -56,12 +56,12 @@ def display_credentials():
 
 def main():
    
-    status = input("Hello Welcome to Password locker. Already have an account? (y/n)")
+    status = input("Hello Welcome to Password locker. Already have an account? (y/n) q:exit")
     if status == 'y': 
         login = input('Enter login name: ')
         password = input ('Enter password: ')
 
-        if login in User.users and User.users[login] == password:
+        if login in User.users and User.users == password:
             print('Login successful!')
             print(f"Hello {login}. what would you like to do?")
             print('\n')
@@ -73,16 +73,24 @@ def main():
     elif status == 'n': 
         create_Login = input('Create username: ')
 
-        if create_Login is User.users:
+        if create_Login in User.users:
             print('Name already exists!')
+            login = input('Enter login name: ')
+            password = input ('Enter password: ')
+            if login in User.users and User.users == password:
+                print('Login successful!')
+                print(f"Hello {login}. what would you like to do?")
+                print('\n')
+
         else :
             create_password = input('Create password: ')
-            User.users = create_password
+            User.users[create_Login] = create_password
+
             print('\n account created !\n')
             login = input('Enter login name: ')
             password = input ('Enter password: ')
 
-            if login in User.users and User.users == password:
+            if login in User.users and User.users[login] == password:
                 print('Login successful!')
                 print(f"Hello {login}. what would you like to do?")
                 print('\n')
@@ -92,7 +100,7 @@ def main():
             
 
     while status != 'q':
-            print("Use these short codes : cc - create a new contact, dc - display contacts, fc -find a contact, ex -exit the contact list ")
+            print("Use these short codes : cc - create a new credential, dc - display credential, fc -find a credential, ex -exit the credential list ")
 
             short_code = input().lower()
 

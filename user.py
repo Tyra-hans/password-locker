@@ -4,6 +4,7 @@ class User:
     '''
     users = []
     status=""
+    
     def __init__(self,name,password):
         '''
         __init__ method that allows us to define properties for our objects.
@@ -26,5 +27,6 @@ class User:
         '''
         login method allows users to login
         '''
+        
 
 
