@@ -9,11 +9,18 @@ def create_users(name,password):
     new_user = User(name,password)
     return new_user
 
-def save_users(user):
+def save_users(self,user):
     '''
     Function to save Users
     '''
     user.save_users(user)
+def existing_userslist(name,password):
+    '''
+    Function to check if users exist
+    '''
+    exist = User.existing_user(name,password)
+    return exist
+
 def create_credentials(title,username,password):
     '''
     Function to create new Credentials
@@ -60,45 +67,65 @@ def main():
     if status == 'y': 
         name = input('Enter login name: ')
         password = input ('Enter password: ')
-
-        if name in User.users and User.users == password:
+        existing= existing_userslist(name,password)
+        if existing == True:
+        # if name in User.users and User.users == password:
             print('Login successful!')
             print(f"Hello {name}. what would you like to do?")
             print('\n')
         else:
             print('\n This user doesnt exist or incorrect password \n')
             status = input("Hello Welcome to Password locker. Already have an account? (y/n)")
+            if status == 'n':
+                create_name = input('Create username: ')
+                name = create_name
+                create_password = input('Create password: ')
+                password = create_password
+                existing = existing_userslist(name,password)
+                print('\n Please Login\n')
+                name = input('Enter login name: ')
+                password = input ('Enter password: ')
+                print('Login successful!')
+                print(f"Hello {name}. what would you like to do?")
+                print('\n')
+                #==== to input the create login logic ====
             
 
     elif status == 'n': 
         create_name = input('Create username: ')
+        name = create_name
+        create_password = input('Create password: ')
+        password = create_password
+        existing = existing_userslist(name,password)
 
-        if create_name in User.users:
+        if existing == True:
+        # if create_name in User.users:
             print('Name already exists!')
+            #the user is directed to login here
+            print('\n login instead\n')
             name = input('Enter login name: ')
             password = input ('Enter password: ')
             
-            if name in User.users and User.users == password:
-                print('Login successful!')
-                print(f"Hello {name}. what would you like to do?")
-                print('\n')
+            # if name in User.users and User.users == password:
+            print('Login successful!')
+            print(f"Hello {name}. what would you like to do?")
+            print('\n')
 
         else :
-            password = input('Create password: ')
-            # User.users = create_password
-            save_users(create_users(name,password))
+            # password = input('Create password: ')
+            # User.users = password
+            # user = create_users(name, password)
+            # user.save_users(user)
+            
 
             print('\n account created !\n')
-            login = input('Enter login name: ')
+            name = input('Enter login name: ')
             password = input ('Enter password: ')
-
-            if login in User.users and User.users[login] == password:
-                print('Login successful!')
-                print(f"Hello {login}. what would you like to do?")
-                print('\n')
-            else:
-                print('\n This user doesnt exist or incorrect password \n')
-                status = input("Hello Welcome to Password locker. Already have an account? (y/n)")
+            print(f"Hello {name}. what would you like to do?")
+            print('\n')
+            # else:
+            #     print('\n This user doesnt exist or incorrect password \n')
+            #     status = input("Hello Welcome to Password locker. Already have an account? (y/n)")
             
 
     while status != 'q':
@@ -134,7 +161,7 @@ def main():
                         print('\n')
 
                         for credential in display_credentials():
-                                    print(f"{credential.title} {credential.username} .....{credential.password}")
+                                    print(f"title: {credential.title}.. username {credential.username}..password:{credential.password}")
 
                         print('\n')
                     else:
