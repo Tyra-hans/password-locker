@@ -31,10 +31,10 @@ class Credential :
         '''
         method that allows the user to generate a password with 9 characters
         '''
-        generate_password = ''.join(random.choice(chararcter)
+        generate_password = ''.join(random.choice(character)
         for _ in range(size))
         return generate_password
-        
+
     def delete_credential(self):
 
         '''
