@@ -14,12 +14,16 @@ def save_users(user):
     Function to save Users
     '''
     user.save_users()
-def existing_userslist(name,password):
-    '''
-    Function to check if users exist
-    '''
-    exist = User.existing_user(name,password)
-    return exist
+def login(name,password):
+    checked_user = User.existing_user(name,password)
+    return checked_user
+
+# def existing_user(name,password):
+#     '''
+#     Function to check if users exist
+#     '''
+#     exist = User.existing_user(name,password)
+#     return exist
 
 def create_credentials(title,username,password):
     '''
@@ -67,12 +71,13 @@ def main():
     if status == 'y': 
         name = input('Enter login name: ')
         password = input ('Enter password: ')
-        exist= existing_userslist(name,password)
+        # exist= existing_userslist(name,password)
         while True:
         # if name in User.users and User.users == password:
             print('Login successful!')
             print(f"Hello {name}. what would you like to do?")
             print('\n')
+            break
         else:
             print('\n This user doesnt exist or incorrect password \n')
             status = input("Hello Welcome to Password locker. Already have an account? (y/n)")
@@ -81,7 +86,7 @@ def main():
                 name = create_name
                 create_password = input('Create password: ')
                 password = create_password
-                existing = existing_userslist(name,password)
+                # existing = existing_userslist(name,password)
                 print('\n Please Login\n')
                 name = input('Enter login name: ')
                 password = input ('Enter password: ')
@@ -103,12 +108,14 @@ def main():
         print("Please login to continue")
         name = input('Enter login name: ')
         password = input ('Enter password: ')
-        existing= existing_userslist(name,password)
-        if existing == name:
-            print(f"Hello {name}. what would you like to do?")
-            print('\n')
+        user_exist = login(name,password)
+        print(f"Hello {name}. what would you like to do?")
+        print('\n')
 
-            print("Use these short codes : cc - create a new credential, dc - display credential, fc -find a credential, ex -exit the credential list ")
+            # print(f"Hello {name}. what would you like to do?")
+            # print('\n')
+
+        # print("Use these short codes : cc - create a new credential, dc - display credential, fc -find a credential, ex -exit the credential list ")
 
 
         
@@ -134,6 +141,7 @@ def main():
             print("Use these short codes : cc - create a new credential, dc - display credential, fc -find a credential, ex -exit the credential list ")
 
             short_code = input().lower()
+            
 
             if short_code == 'cc':
                     print("New Credential")
@@ -144,10 +152,24 @@ def main():
 
                     print("Username")
                     user_name = input()
+                    
+                    print('Please selected password optiion')
+                    print('gp - generate password')
+                    print('cp- create password')
+                    pass_option = input().lower()
 
-                    print("Password ...")
-                    password = input()
+                    if pass_option =='gp':
+                        password = Credential.generate_password(password)
+                        # return password
 
+
+
+                    elif pass_option =='cp' :
+                        print("Password ...")
+                        password = input()
+                    print(f'credential title: {title}')    
+                    print(f'credential name: {user_name}')
+                    print(f'credential password: {password}')
                     
 
 

@@ -27,7 +27,7 @@ class Credential :
 
         Credential.credential_list.append(self)
         
-    def generate_password(self,size =9, character = string.ascii_lowercase+ string.digits+ string.punctuation ):
+    def generate_password(self,size =9, character = string.ascii_lowercase+ string.digits ):
         '''
         method that allows the user to generate a password with 9 characters
         '''
