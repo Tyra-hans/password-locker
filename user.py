@@ -16,12 +16,12 @@ class User:
         self.name = name
         self.password = password
 
-    def create_account(self,name,password):
-        '''
-        Function to create a new user account
-        '''
-        new_user = User(name,password)
-        return new_user
+    # def create_users(self,name,password):
+    #     '''
+    #     Function to create a new user account
+    #     '''
+    #     new_user = User(name,password)
+    #     return new_user
 
     def save_users(self):
         '''

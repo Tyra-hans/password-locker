@@ -9,11 +9,11 @@ def create_users(name,password):
     new_user = User(name,password)
     return new_user
 
-def save_users(self,user):
+def save_users(user):
     '''
     Function to save Users
     '''
-    user.save_users(user)
+    user.save_users()
 def existing_userslist(name,password):
     '''
     Function to check if users exist
@@ -96,30 +96,20 @@ def main():
         name = create_name
         create_password = input('Create password: ')
         password = create_password
-        # existing = existing_userslist(name,password)
-    while True:
-        # if create_name in User.users:
-        # print('Name already exists!')
-            #the user is directed to login here
+        save_users(create_users(name,password))
         print('*'*60)
         print(f"Account created successfully.You username is {name} and password is {password} ")
         print('*'*60)
-        
-        print('\n Proceed to login\n')
+        print("Please login to continue")
         name = input('Enter login name: ')
         password = input ('Enter password: ')
-        existing = existing_userslist(name,password)
+        existing= existing_userslist(name,password)
         if existing == name:
-            # if name in User.users and User.users == password:
-            print('Login successful!')
             print(f"Hello {name}. what would you like to do?")
             print('\n')
-        else:
-            print('Acount doesnt exist..Please create an account')
-            create_name = input('Create username: ')
-            name = create_name
-            create_password = input('Create password: ')
-            password = create_password
+
+            print("Use these short codes : cc - create a new credential, dc - display credential, fc -find a credential, ex -exit the credential list ")
+
 
         
         # else :
