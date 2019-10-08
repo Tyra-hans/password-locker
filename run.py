@@ -67,8 +67,8 @@ def main():
     if status == 'y': 
         name = input('Enter login name: ')
         password = input ('Enter password: ')
-        existing= existing_userslist(name,password)
-        if existing == True:
+        exist= existing_userslist(name,password)
+        while True:
         # if name in User.users and User.users == password:
             print('Login successful!')
             print(f"Hello {name}. what would you like to do?")
@@ -96,34 +96,46 @@ def main():
         name = create_name
         create_password = input('Create password: ')
         password = create_password
-        existing = existing_userslist(name,password)
-
-        if existing == True:
+        # existing = existing_userslist(name,password)
+    while True:
         # if create_name in User.users:
-            print('Name already exists!')
+        # print('Name already exists!')
             #the user is directed to login here
-            print('\n login instead\n')
-            name = input('Enter login name: ')
-            password = input ('Enter password: ')
-            
+        print('*'*60)
+        print(f"Account created successfully.You username is {name} and password is {password} ")
+        print('*'*60)
+        
+        print('\n Proceed to login\n')
+        name = input('Enter login name: ')
+        password = input ('Enter password: ')
+        existing = existing_userslist(name,password)
+        if existing == name:
             # if name in User.users and User.users == password:
             print('Login successful!')
             print(f"Hello {name}. what would you like to do?")
             print('\n')
+        else:
+            print('Acount doesnt exist..Please create an account')
+            create_name = input('Create username: ')
+            name = create_name
+            create_password = input('Create password: ')
+            password = create_password
 
-        else :
-            # password = input('Create password: ')
-            # User.users = password
-            # user = create_users(name, password)
+        
+        # else :
+        #     # print("your account doesnt exist..Create one")
+        #     # password = input('Create password: ')
+        #     # User.users = password
+        #     # user = create_users(name, password)
             # user.save_users(user)
             
 
-            print('\n account created !\n')
-            name = input('Enter login name: ')
-            password = input ('Enter password: ')
-            print(f"Hello {name}. what would you like to do?")
-            print('\n')
-            # else:
+        # print('\n account created !\n')
+        # name = input('Enter login name: ')
+        # password = input ('Enter password: ')
+        # print(f"Hello {name}. what would you like to do?")
+        # print('\n')
+        #     # else:
             #     print('\n This user doesnt exist or incorrect password \n')
             #     status = input("Hello Welcome to Password locker. Already have an account? (y/n)")
             

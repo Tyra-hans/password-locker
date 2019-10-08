@@ -39,14 +39,11 @@ class User:
         Boolean: true or false depending on whether or not a user account exists.
         '''
         
-        
+        a_user = " "
         for user in User.users:
             if user.name == name and user.password == password:
-                    
-            
-                    return True
-                    
-        return False
+               a_user = user.name
+        return a_user 
         
     
 
